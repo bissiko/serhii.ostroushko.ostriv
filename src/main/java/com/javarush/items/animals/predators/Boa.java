@@ -2,26 +2,27 @@ package com.javarush.items.animals.predators;
 
 import com.javarush.items.Organism;
 import com.javarush.service.Type;
-
-public class Bear extends Predator {
+//Удав
+public class Boa extends Predator{
     public int lifeLevel;
     public final int numMax;
     public final double eatMax;
     public final int speedMax;
     public double weight;
-    public Bear(){
-        numMax = 5;
+    public Boa(){
+        numMax = 30;
         lifeLevel = 100;
-        weight = 500;
-        speedMax = 2;
-        eatMax = 80;
+        weight = 15;
+        speedMax = 1;
+        eatMax = 3;
     }
     @Override
     public Type getType(){
-        return Type.BEAR;
+        return Type.BOA;
     }
     @Override
     public Organism reproduce() {
         return this;
     }
+
 }

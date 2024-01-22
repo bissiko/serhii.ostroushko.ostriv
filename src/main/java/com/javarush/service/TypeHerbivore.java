@@ -1,14 +1,14 @@
 package com.javarush.service;
 
 public enum TypeHerbivore {
-    DEER,
+    DEER, //олень
     RABBIT,
     MOUSE,
-    GOAT,
+    GOAT, //козел
     SHEEP,
-    BOAR,
-    BUFFALO,
+    BOAR, //кабан
+    BUFFALO, //буйвол
     DUCK,
-    CATERPILLAR,
+    CATERPILLAR, //гусень
     HORSE
 }

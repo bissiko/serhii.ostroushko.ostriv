@@ -1,15 +1,14 @@
 package com.javarush.service;
 
-import com.javarush.items.animals.herbivores.Herbivore;
-import com.javarush.items.animals.predators.Bear;
-import com.javarush.items.animals.predators.Fox;
-import com.javarush.items.animals.predators.Predator;
-import com.javarush.items.animals.predators.Wolf;
+import com.javarush.items.animals.herbivores.*;
+import com.javarush.items.animals.predators.*;
 import com.javarush.items.plants.Gras;
 import com.javarush.place.Cell;
 import com.javarush.place.IslandPlace;
 
 import java.util.*;
+
+import static com.javarush.service.Type.WOLF;
 
 public class InitCells {
     IslandPlace islandPlace = new IslandPlace();
@@ -24,6 +23,10 @@ public class InitCells {
                 fulfillPlants(cell);
                 islandPlace.getCells()[x][y] = cell;
 
+                System.out.println("Cell: " + x + "-" + y +
+                        ". Predators: " + islandPlace.getCells()[x][y].getPredators().size() +
+                        " Gras: " + islandPlace.getCells()[x][y].getGrases().size() +
+                        " Herbivore: " + islandPlace.getCells()[x][y].getHerbivore().size());
             }
         }
     }
@@ -74,7 +77,7 @@ public class InitCells {
     private void fulfillPredators(Cell cell) {
         Random random = new Random();
         Map<Type, Integer> maxPredatorsCount = new EnumMap<>(Type.class);
-        maxPredatorsCount.put(Type.WOLF, 30);
+        maxPredatorsCount.put(WOLF, 30);
         maxPredatorsCount.put(Type.BEAR, 5);
         maxPredatorsCount.put(Type.FOX, 30);
         maxPredatorsCount.put(Type.EAGLE, 20);
@@ -93,25 +96,25 @@ public class InitCells {
     public Predator createAnimalByType(Type type) {
         return switch (type) {
             case WOLF -> new Wolf();
-            case BOA -> null; //удав
+            case BOA -> new Boa(); //удав
             case BEAR -> new Bear();
-            case EAGLE -> null;
+            case EAGLE -> new Eagle();
             case FOX -> new Fox();
         };
         //throw new IllegalArgumentException("Unknown Animal: " + type);
     }
     public Herbivore createHerbivoreByType(TypeHerbivore type) {
         return switch (type) {
-            case DEER -> null; //Олень
-            case RABBIT -> null;
-            case MOUSE -> null;
-            case GOAT -> null; // козел
-            case SHEEP -> null;
-            case BOAR -> null; //кабан
-            case BUFFALO -> null; //буйвол
-            case DUCK -> null; //утка
-            case CATERPILLAR -> null; // гусеница
-            case HORSE -> null;
+            case DEER -> new Deer(); //Олень
+            case RABBIT -> new Rabbit();
+            case MOUSE -> new Mouse();
+            case GOAT -> new Goat(); // козел
+            case SHEEP -> new Sheep();
+            case BOAR -> new Boar(); //кабан
+            case BUFFALO -> new Buffalo(); //буйвол
+            case DUCK -> new Duck(); //утка
+            case CATERPILLAR -> new Caterpillar(); // гусеница
+            case HORSE -> new Horse();
         };
         //throw new IllegalArgumentException("Unknown Animal: " + type);
     }
@@ -122,12 +125,14 @@ public class InitCells {
     public TypeHerbivore getTypeHerbivore(Herbivore herbivore) {
         if (herbivore instanceof Herbivore){
             //Виявлення типу тварини
+            return ((Herbivore)herbivore).getType();
         }
         throw new IllegalArgumentException("Невідомий тип тварини" + herbivore.getClass().getSimpleName());
     }
     public Type getTypePredator(Predator predator) {
         if (predator instanceof Predator){
             //Виявлення типу тварини
+            return ((Predator)predator).getType();
         }
         throw new IllegalArgumentException("Невідомий тип тварини" + predator.getClass().getSimpleName());
     }

@@ -1,28 +1,28 @@
-package com.javarush.items.animals.predators;
+package com.javarush.items.animals.herbivores;
 
 import com.javarush.items.Organism;
-import com.javarush.service.Type;
+import com.javarush.service.TypeHerbivore;
 
-public class Wolf extends Predator {
+public class Buffalo   extends Herbivore {
     public int lifeLevel;
     public final int numMax;
     public final double eatMax;
     public final int speedMax;
     public double weight;
-    public Wolf(){
-        numMax = 30;
+    public Buffalo(){
+        numMax = 10;
         lifeLevel = 100;
-        weight = 50;
+        weight = 700;
         speedMax = 3;
-        eatMax = 8;
+        eatMax = 100;
     }
     @Override
-    public Type getType(){
-        return Type.WOLF;
+    public TypeHerbivore getType(){
+        return TypeHerbivore.BUFFALO;
     }
     @Override
     public Organism reproduce() {
         return this;
     }
-
 }
+
