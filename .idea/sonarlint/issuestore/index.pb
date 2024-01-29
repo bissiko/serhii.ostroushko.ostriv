@@ -1,6 +1,4 @@
 
-S
-#src/main/java/org/example/Main.java,0\b\0ba1b9c7a4878802f938e331cc2d8a042087ec6b
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 T
@@ -28,8 +26,6 @@ Z
 ,src/main/java/com/javarush/service/Type.java,a\0\a0f97e45c0cf16bcb783f562f81f1dd076883952
 a
 1src/main/java/com/javarush/service/InitCells.java,e\6\e6ecda113fb231dfcc3faff69594d0e604393e63
-\
-,src/main/java/com/javarush/place/Island.java,5\f\5fee522f65f4f7d633a3d822a601790c5eab82e9
 m
 =src/main/java/com/javarush/items/animals/herbivores/Boar.java,c\e\ce7fc65b8fd759c2e7582b8aede8eee082499b9d
 r
@@ -68,3 +64,9 @@ t
 Dsrc/main/java/com/javarush/items/animals/herbivores/Caterpillar.java,0\6\061c596e46785da16e18055995edb4540067709d
 n
 >src/main/java/com/javarush/items/animals/herbivores/Horse.java,2\0\20cc28380e4212f2b718ddfa69ca08b32a97cfa9
+_
+/src/main/java/com/javarush/service/RunLife.java,5\c\5c53e92f15a317654718c06148be525360ad9796
+a
+1src/main/java/com/javarush/abstracts/Eatable.java,d\5\d54bb788497e7da0f28381f2a733eccf2b63c2d0
+c
+3src/main/java/com/javarush/items/plants/Plants.java,4\e\4eeeffc51cf0424397dfc45923cce5663477bbaf

@@ -3,18 +3,20 @@ package com.javarush.items.plants;
 import com.javarush.items.Organism;
 import com.javarush.service.TypePlants;
 
-public class Gras extends Organism {
+import static com.javarush.service.TypePlants.GRAS;
+
+public class Gras extends Plants {
     public int lifeLevel;
-    public final int sumMax;
-    public int weight;
+    public static final int numMax = 200;
+    public double weight;
     public Gras(){
         lifeLevel = 100;
         weight = 1;
-        sumMax = 200;
     }
     public TypePlants getType(){
-        return TypePlants.GRAS;
+        return GRAS;
     }
+    public double getWeight() {return this.weight;}
     @Override
     public Organism reproduce() {
         return this;

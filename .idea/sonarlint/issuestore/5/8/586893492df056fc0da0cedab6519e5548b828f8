@@ -1,2 +1,11 @@
 
-G	java:S106"+Replace this use of System.out by a logger.(½É‹ê8õ¶‰†Ó1
+G	java:S106"+Replace this use of System.out by a logger.(½É‹ê8ŒãÀ©Õ1
+_
+java:S1854)"=Remove this useless assignment to local variable "plantType".(ù¢Û»ıÿÿÿÿ8ãÀ©Õ1
+L	java:S106!"+Replace this use of System.out by a logger.(ëİ®¸úÿÿÿÿ8ãÀ©Õ1
+G	java:S106&"+Replace this use of System.out by a logger.(ÁßàÜ8ãÀ©Õ1
+P
+java:S1481)".Remove this unused "plantType" local variable.(ù¢Û»ıÿÿÿÿ8ãÀ©Õ1
+G	java:S106+"+Replace this use of System.out by a logger.(Ó¨çá8š²Ã©Õ1
+Q
+java:S1128"4Remove this unused import 'com.javarush.place.Cell'.(½â´ë8´Æ©Õ1
