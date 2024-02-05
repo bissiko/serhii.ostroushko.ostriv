@@ -20,6 +20,10 @@ public class Wolf extends Predator {
         speedMax = 3;
         eatMax = 8;
     }
+    public int getNumMax() {
+        return this.numMax;
+    }
+
     @Override
     public Type getType(){
         return Type.WOLF;
@@ -33,10 +37,22 @@ public class Wolf extends Predator {
     public double getEatMax() {
         return this.eatMax;
     }
+    @Override
+    public int getSpeedMax() {
+        return this.speedMax;
+    }
 
     @Override
     public Organism reproduce() {
         return this;
+    }
+    @Override
+    public void setLifeLevel(int lifeLevel) {
+        this.lifeLevel = lifeLevel;
+    }
+    @Override
+    public int getLifeLevel() {
+        return this.lifeLevel;
     }
 
 }

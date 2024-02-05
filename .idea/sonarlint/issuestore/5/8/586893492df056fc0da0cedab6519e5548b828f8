@@ -1,11 +1,19 @@
 
-G	java:S106"+Replace this use of System.out by a logger.(½É‹ê8ŒãÀ©Õ1
+G	java:S106"+Replace this use of System.out by a logger.(½É‹ê8æÎæĞ×1
+L	java:S106"+Replace this use of System.out by a logger.(¢ÑÊ·şÿÿÿÿ8æÎæĞ×1
+X	java:S125&"<This block of commented-out lines of code should be removed.(³¬º‰8èÎæĞ×1
+G	java:S106,"+Replace this use of System.out by a logger.(·ø™ä8èÎæĞ×1
+c
+java:S1126-"AReplace this if-then-else statement by a single return statement.(ÂñÁøûÿÿÿÿ8èÎæĞ×1
 _
-java:S1854)"=Remove this useless assignment to local variable "plantType".(ù¢Û»ıÿÿÿÿ8ãÀ©Õ1
-L	java:S106!"+Replace this use of System.out by a logger.(ëİ®¸úÿÿÿÿ8ãÀ©Õ1
-G	java:S106&"+Replace this use of System.out by a logger.(ÁßàÜ8ãÀ©Õ1
+java:S1854@"=Remove this useless assignment to local variable "plantType".(ù¢Û»ıÿÿÿÿ8èÎæĞ×1
+E
+java:S1172/"(Remove this unused method parameter "x".(ÒÛ‰À8èÎæĞ×1
+F	java:S1062"+Replace this use of System.out by a logger.(ü§ğl8èÎæĞ×1
+L	java:S1066"+Replace this use of System.out by a logger.(Ú§Ô¢øÿÿÿÿ8éÎæĞ×1
+G	java:S1068"+Replace this use of System.out by a logger.(»§ï¢8éÎæĞ×1
+F	java:S106<"+Replace this use of System.out by a logger.(ƒ£Ÿ{8éÎæĞ×1
+G	java:S106>"+Replace this use of System.out by a logger.(³ëÁã8êÎæĞ×1
 P
-java:S1481)".Remove this unused "plantType" local variable.(ù¢Û»ıÿÿÿÿ8ãÀ©Õ1
-G	java:S106+"+Replace this use of System.out by a logger.(Ó¨çá8š²Ã©Õ1
-Q
-java:S1128"4Remove this unused import 'com.javarush.place.Cell'.(½â´ë8´Æ©Õ1
+java:S1481@".Remove this unused "plantType" local variable.(ù¢Û»ıÿÿÿÿ8êÎæĞ×1
+G	java:S106B"+Replace this use of System.out by a logger.( ˆÀå8êÎæĞ×1

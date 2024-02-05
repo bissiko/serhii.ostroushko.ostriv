@@ -24,10 +24,10 @@ public class InitCells {
                 fulfillPlants(cell);
                 islandPlace.getCells()[x][y] = cell;
 
-                System.out.println("Cell: " + x + "-" + y +
+                /*System.out.println("Cell: " + x + "-" + y +
                         ". Predators: " + islandPlace.getCells()[x][y].getPredators().size() +
                         " Gras: " + islandPlace.getCells()[x][y].getPlants().size() +
-                        " Herbivore: " + islandPlace.getCells()[x][y].getHerbivore().size());
+                        " Herbivore: " + islandPlace.getCells()[x][y].getHerbivore().size());*/
             }
         }
     }
@@ -143,14 +143,14 @@ public class InitCells {
             //Виявлення типу тварини
             return ((Herbivore)herbivore).getType();
         }
-        throw new IllegalArgumentException("Невідомий тип тварини" + herbivore.getClass().getSimpleName());
+        throw new IllegalArgumentException("Невідомий тип Herbivore" + herbivore.getClass().getSimpleName());
     }
     public Type getTypePredator(Predator predator) {
         if (predator instanceof Predator){
             //Виявлення типу тварини
             return ((Predator)predator).getType();
         }
-        throw new IllegalArgumentException("Невідомий тип тварини" + predator.getClass().getSimpleName());
+        throw new IllegalArgumentException("Невідомий тип Predator" + predator.getClass().getSimpleName());
     }
     public TypePlants getTypePlants(Plants plants) {
         if (plants instanceof Plants){

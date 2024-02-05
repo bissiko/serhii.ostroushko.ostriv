@@ -15,12 +15,16 @@ public class Fox extends Predator {
     //HORSE, DEER, RABBIT, MOUSE, GOAT, SHEEP, BOAR, BUFFALO, DUCK, CATERPILLAR
 
     public Fox(){
-        //numMax = 30;
+        //numMax = this.numMax;
         lifeLevel = 100;
         weight = 8;
         speedMax = 2;
         eatMax = 2;
     }
+    public int getNumMax() {
+        return this.numMax;
+    }
+
     @Override
     public Type getType(){
         return Type.FOX;
@@ -28,14 +32,23 @@ public class Fox extends Predator {
     public int getEatHerbivoreChance(TypeHerbivore type){
         return eatHerbivore[Herbivore.getTypeIndex(type)];
     }
-    public int getLifeLevel(){
-        return lifeLevel;
-    }
     public double getWeight() {
         return this.weight;
     }
     public double getEatMax() {
         return this.eatMax;
+    }
+    @Override
+    public void setLifeLevel(int lifeLevel) {
+        this.lifeLevel = lifeLevel;
+    }
+    @Override
+    public int getLifeLevel() {
+        return this.lifeLevel;
+    }
+    @Override
+    public int getSpeedMax() {
+        return this.speedMax;
     }
     @Override
     public Organism reproduce() {

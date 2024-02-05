@@ -7,6 +7,7 @@ import com.javarush.service.TypePlants;
 import static com.javarush.service.TypePlants.GRAS;
 
 public abstract class Plants extends Organism {
+    public static final int reproductValue = 4;
     public static TypePlants[] typesPlants = {GRAS};
     public static final int againEatMax = 12;
 

@@ -15,32 +15,55 @@ public class Application {
         InitCells cells = new InitCells();
         cells.initCells();
 
-        getStatistik(cells, "  ", " plants");
-
-
         RunLife runLifeNew = new RunLife();
-        for (int i = 0; i < 2; i++) {
+
+        boolean isCanRun = true;
+        int lifeSteps = 1;
+        while (isCanRun) {
+            System.out.println("\n Start RunLife !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! "  + lifeSteps);
+            getStatistik(cells, "  ", " befor");
+
             runLifeNew.runLife(cells.islandPlace.getCells());
+            isCanRun = canRunLife(cells);
+            runLifeNew.runMove(cells.islandPlace.getCells());
+            lifeSteps++;
         }
-
-        getStatistik(cells, " +++++++++++++++++++++++++++++++++++++++++++++++++ ", " +++++++++++++++++++++++++++++++++++++++++++++++++++++++++ plants");
     }
-
+    private static boolean canRunLife (InitCells cells) {
+        int totalHerbivores = 0;
+        for (int x = 0; x < cells.islandPlace.getCells().length; x++) {
+            for (int y = 0; y < cells.islandPlace.getCells()[x].length; y++) {
+                Cell cell = cells.islandPlace.getCells()[x][y];
+                for (Map.Entry<TypeHerbivore, Set<Herbivore>> entry : cell.getHerbivore().entrySet()) {
+                    //TypeHerbivore herbivoreType = entry.getKey();
+                    Set<Herbivore> herbivoreSet = entry.getValue();
+                    totalHerbivores = totalHerbivores + herbivoreSet.size();
+                }
+            }
+        }
+        System.out.println("Total Herbivores now " + totalHerbivores);
+        if (totalHerbivores == 0) {return false;} else {return true;}
+    }
     private static void getStatistik(InitCells cells, String spaces, String x) {
-        for (Map.Entry<Type, Set<Predator>> entry : cells.islandPlace.getCells()[2][1].getPredators().entrySet()) {
+        int itX = 2;
+        int itY = 1;
+        System.out.print("Pre... ");
+        for (Map.Entry<Type, Set<Predator>> entry : cells.islandPlace.getCells()[itX][itY].getPredators().entrySet()) {
             Type predatorType = entry.getKey();
             Set<Predator> predatorSet = entry.getValue();
-            System.out.println("Pre... " + predatorSet.size() + spaces + predatorType);
+            System.out.print(predatorSet.size() + spaces + predatorType + ", ");
         }
-        for (Map.Entry<TypeHerbivore, Set<Herbivore>> entry : cells.islandPlace.getCells()[2][1].getHerbivore().entrySet()) {
+        System.out.print("\n Cell XY " + itX + " : " + itY + " __________________________________________________ Herbi... ");
+        for (Map.Entry<TypeHerbivore, Set<Herbivore>> entry : cells.islandPlace.getCells()[itX][itY].getHerbivore().entrySet()) {
             TypeHerbivore herbivoreType = entry.getKey();
             Set<Herbivore> herbivoreSet = entry.getValue();
-            System.out.println(herbivoreSet.size() + spaces + herbivoreType);
+            System.out.print(herbivoreSet.size() + spaces + herbivoreType + ", ");
         }
-        for (Map.Entry<TypePlants, Set<Plants>> entryPlants : cells.islandPlace.getCells()[2][1].getPlants().entrySet()) {
+        System.out.print("\n +++++++++ Plants... ");
+        for (Map.Entry<TypePlants, Set<Plants>> entryPlants : cells.islandPlace.getCells()[itX][itY].getPlants().entrySet()) {
             TypePlants plantType = entryPlants.getKey();
             Set<Plants> plantSet = entryPlants.getValue();
-            System.out.println(plantSet.size() + x);
+            System.out.println(plantSet.size());
         }
     }
 }

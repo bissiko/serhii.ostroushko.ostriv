@@ -17,6 +17,7 @@ public class Gras extends Plants {
         return GRAS;
     }
     public double getWeight() {return this.weight;}
+    public int getNumMax() {return this.numMax;}
     @Override
     public Organism reproduce() {
         return this;

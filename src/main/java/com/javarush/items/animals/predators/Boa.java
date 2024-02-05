@@ -22,6 +22,10 @@ public class Boa extends Predator{
         speedMax = 1;
         eatMax = 3;
     }
+    public int getNumMax() {
+        return this.numMax;
+    }
+
     @Override
     public Type getType(){
         return Type.BOA;
@@ -34,6 +38,18 @@ public class Boa extends Predator{
     }
     public double getEatMax() {
         return this.eatMax;
+    }
+    @Override
+    public void setLifeLevel(int lifeLevel) {
+        this.lifeLevel = lifeLevel;
+    }
+    @Override
+    public int getLifeLevel() {
+        return this.lifeLevel;
+    }
+    @Override
+    public int getSpeedMax() {
+        return this.speedMax;
     }
 
     @Override

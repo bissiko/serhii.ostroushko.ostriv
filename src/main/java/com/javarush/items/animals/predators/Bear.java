@@ -15,15 +15,24 @@ public class Bear extends Predator {
     //HORSE, DEER, RABBIT, MOUSE, GOAT, SHEEP, BOAR, BUFFALO, DUCK, CATERPILLAR
 
     public Bear(){
+        super();
         //numMax = 5;
         lifeLevel = 100;
         weight = 500;
         speedMax = 2;
         eatMax = 80;
     }
+    public int getNumMax() {
+        return this.numMax;
+    }
+
     @Override
     public Type getType(){
         return Type.BEAR;
+    }
+    @Override
+    public int getSpeedMax() {
+        return this.speedMax;
     }
     public int getEatHerbivoreChance(TypeHerbivore type){
         return eatHerbivore[Herbivore.getTypeIndex(type)];
@@ -33,6 +42,14 @@ public class Bear extends Predator {
     }
     public double getEatMax() {
         return this.eatMax;
+    }
+    @Override
+    public void setLifeLevel(int lifeLevel) {
+        this.lifeLevel = lifeLevel;
+    }
+    @Override
+    public int getLifeLevel() {
+        return this.lifeLevel;
     }
 
     @Override

@@ -1,22 +1,22 @@
 package com.javarush.items.animals.herbivores;
 
 import com.javarush.items.animals.Animals;
+import com.javarush.items.animals.predators.Predator;
 import com.javarush.items.plants.Plants;
 import com.javarush.place.Cell;
-import com.javarush.service.Type;
+import com.javarush.place.IslandPlace;
 import com.javarush.service.TypeHerbivore;
 import com.javarush.service.TypePlants;
 
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 
-import static com.javarush.service.Type.*;
+import static com.javarush.place.IslandPlace.cells;
 import static com.javarush.service.TypeHerbivore.*;
 
 public abstract class Herbivore  extends Animals {
     //public double eatMax;
+    public static final int reproductValue = 15; // Herbivore не може розмножуватися кожен день, а раз на стільки днів
+
     public abstract TypeHerbivore getType();
     public static TypeHerbivore[] typesHerbivore = {HORSE, DEER, RABBIT, MOUSE, GOAT, SHEEP, BOAR, BUFFALO, DUCK, CATERPILLAR};
     public static int getTypeIndex(TypeHerbivore type) {
@@ -27,7 +27,7 @@ public abstract class Herbivore  extends Animals {
         }
         return -1;
     }
-    public static final int againEatMax = 10;
+    public static final int againEatMax = 1000;
 
     public abstract double getWeight();
     public abstract double getEatMax();
@@ -41,9 +41,9 @@ public abstract class Herbivore  extends Animals {
         double herbivoreEatMax = herbivore.getEatMax();
 
         Result result = getResultHerbivoreEatHerbivore(cell, random, isHerbivoreEat, eatNow, herbivore);
-        if (herbivoreEatMax > 0) {
-            System.out.println("Need Gras Need Gras Need Gras :" + result.eatNow() + " of " + herbivoreEatMax + " -- " + herbivore.getType() + "");
-        }
+//        if (herbivoreEatMax > 0) {
+//            System.out.println("Need Gras Need Gras Need Gras :" + result.eatNow() + " of " + herbivoreEatMax + " -- " + herbivore.getType() + "");
+//        }
         if (result.eatNow() < herbivoreEatMax) {
             ResultPlant resultPlant = getResultHerbivoreEatPlants(cell, random, result.isHerbivoreEat(), result.eatNow(), herbivore);
             return resultPlant.isHerbivoreEat();
@@ -68,16 +68,18 @@ public abstract class Herbivore  extends Animals {
                     if (herbivore2.getWeight() >= herbivoreEatMax) {
                         eatNow = herbivoreEatMax;
                         isHerbivoreEat = true;
-                        System.out.println(eatNow + " ###### Herbivore " + herbivore.getType().toString() + " eat now Herbivore " + herbivore2.getType().toString());
+//                        System.out.println(eatNow + " ###### Herbivore " + herbivore.getType().toString() + " eat now Herbivore " + herbivore2.getType().toString());
                     } else {
                         eatNow = eatNow + herbivore2.getWeight();
                         if (eatNow >= herbivoreEatMax) {
                             isHerbivoreEat = true;
                         }
-                        System.out.println(eatNow + " $$$$$$$ " + getLifeLevel + " Herbivore " + herbivore.getType().toString() + " eat now Herbivore " + herbivore2.getType().toString());
+//                        System.out.println(eatNow + " $$$$$$$ " + getLifeLevel + " Herbivore " + herbivore.getType().toString() + " eat now Herbivore " + herbivore2.getType().toString());
                     }
                     //System.out.println("2 Herbivore deleted: " + herbivore2.getType().toString());
+                    //System.out.print(herbivoreSet2.size() + " >> ");
                     iteratorH.remove();
+                    //System.out.println(herbivoreSet2.size() + " After " + herbivore2.getType());
                     i++;
                 }
             }
@@ -115,13 +117,13 @@ public abstract class Herbivore  extends Animals {
                     if (plant.getWeight() > herbivoreEatMax) {
                         eatNow = herbivoreEatMax;
                         isHerbivoreEat = true;
-                        System.out.println("HerbivorePlant " + herbivore.getType().toString() + " eat now Plant " + plant.getType().toString());
+                        //System.out.println("HerbivorePlant " + herbivore.getType().toString() + " eat now Plant " + plant.getType().toString());
                     } else {
                         eatNow = eatNow + plant.getWeight();
                         if (eatNow >= herbivoreEatMax) {
                             isHerbivoreEat = true;
                         }
-                        System.out.println("%%% HerbivorePlant " + herbivore.getType().toString() + " eat now Plant " + plant.getType().toString());
+                        //System.out.println("%%% HerbivorePlant " + herbivore.getType().toString() + " eat now Plant " + plant.getType().toString());
                     }
                     //System.out.println("Plant deleted: " + plant.getType().toString());
                     iteratorH.remove();
@@ -138,11 +140,38 @@ public abstract class Herbivore  extends Animals {
         } else if (eatNow == 0) {
             herbivore.setLifeLevel(getLifeLevel - 10);
         }
-        System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++ LifeLevel " + herbivore.getLifeLevel());
+//        System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++ LifeLevel " + herbivore.getLifeLevel());
 
         return new ResultPlant(isHerbivoreEat, eatNow);
     }
 
     private record ResultPlant(boolean isHerbivoreEat, double eatNow) {
+    }
+    public boolean moveHerbivore(Cell cell, Herbivore herbivore, int x, int y) {
+        boolean isMoved = false;
+        Random random = new Random();
+        int whereMove = random.nextInt(5);
+        int howManyMove = random.nextInt(herbivore.getSpeedMax() + 1);
+        int newX = x;
+        int newY = y;
+        if (whereMove == 1) {
+            newX = Math.min(x + howManyMove, IslandPlace.width - 1); // Вправо
+        }
+        else if (whereMove == 3) {
+            newX = Math.max(x - howManyMove, 0); // Вліво
+        }
+        if (whereMove == 2) {
+            newY = Math.max(y - howManyMove, 0); // Вниз
+        }
+        else if (whereMove == 4) {
+            newY = Math.min(y + howManyMove, IslandPlace.height - 1); // Вгору
+        }
+        if ((newX != x) || (newY != y)) {
+            //System.out.print(cells[newX][newY].getHerbivore().size() + " >> ");
+            cells[newX][newY].getHerbivore().computeIfAbsent(herbivore.getType(), k -> new HashSet<>()).add(herbivore);
+            isMoved = true;
+            //System.out.println(cells[newX][newY].getHerbivore().size() + " After " + herbivore.getType());
+        }
+        return isMoved;
     }
 }

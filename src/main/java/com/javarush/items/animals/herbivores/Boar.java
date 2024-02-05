@@ -18,6 +18,10 @@ public class Boar extends Herbivore {
         //speedMax = 2;
         //eatMax = 50;
     }
+    public int getNumMax() {
+        return this.numMax;
+    }
+
     public static final int[] eatHerbivore = {0, 0, 0, 50, 0, 0, 0, 0, 0, 90};
     //HORSE, DEER, RABBIT, MOUSE, GOAT, SHEEP, BOAR, BUFFALO, DUCK, CATERPILLAR
     public static final int[] eatPlants = {100};
@@ -37,6 +41,18 @@ public class Boar extends Herbivore {
     }
     public double getEatMax() {
         return this.eatMax;
+    }
+    @Override
+    public void setLifeLevel(int lifeLevel) {
+        this.lifeLevel = lifeLevel;
+    }
+    @Override
+    public int getLifeLevel() {
+        return this.lifeLevel;
+    }
+    @Override
+    public int getSpeedMax() {
+        return this.speedMax;
     }
 
     @Override

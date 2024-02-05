@@ -3,19 +3,21 @@ package com.javarush.items.animals.predators;
 import com.javarush.items.animals.Animals;
 import com.javarush.items.animals.herbivores.Herbivore;
 import com.javarush.place.Cell;
+import com.javarush.place.IslandPlace;
+import com.javarush.service.InitCells;
 import com.javarush.service.Type;
 import com.javarush.service.TypeHerbivore;
 
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 
+import static com.javarush.place.IslandPlace.cells;
 import static com.javarush.service.Type.*;
 
 public abstract class Predator extends Animals {
     public double eatMax;
+    public static final int reproductValue = 50; // Predator не може розмножуватися кожен день, а раз на стільки днів
 
+    public abstract int getSpeedMax();
     public abstract Type getType();
     public abstract double getEatMax();
     public abstract double getWeight();
@@ -51,16 +53,19 @@ public abstract class Predator extends Animals {
                     if (herbivore.getWeight() > predatorEatMax) {
                         eatNow = predatorEatMax;
                         isPredatorEat = true;
-                        System.out.println("Predator " + getLifeLevel + " " + predator.getType().toString() + " eat now " + herbivore.getType().toString());
+                        //System.out.println("Predator " + getLifeLevel + " " + predator.getType().toString() + " eat now " + herbivore.getType().toString());
                     } else {
                         eatNow = eatNow + herbivore.getWeight();
                         if (eatNow >= predatorEatMax) {
                             isPredatorEat = true;
+                            //System.out.println("### " + getLifeLevel + " Predator " + eatNow + " - " + predator.getType().toString() + " eat now " + herbivore.getType().toString());
                         }
-                        System.out.println("$$$ " + getLifeLevel + " Predator " + eatNow + " - " + predator.getType().toString() + " eat now " + herbivore.getType().toString());
+                        //System.out.println("$$$ " + getLifeLevel + " Predator " + eatNow + " - " + predator.getType().toString() + " eat now " + herbivore.getType().toString());
                     }
                     //System.out.println("Herbivore deleted: " + herbivore.getType().toString());
+                    //System.out.print(herbivoreSet.size() + " >> ");
                     iteratorH.remove();
+                    //System.out.println(herbivoreSet.size() + " After " + herbivore.getType());
                     i++;
                 }
             }
@@ -75,5 +80,35 @@ public abstract class Predator extends Animals {
             predator.setLifeLevel(getLifeLevel - 10);
         }
         return isPredatorEat;
+    }
+    public boolean movePredator(Cell cell, Predator predator, int x, int y) {
+        boolean isMoved = false;
+        Random random = new Random();
+        int whereMove = random.nextInt(5);
+        int howManyMove = random.nextInt(predator.getSpeedMax() + 1);
+        int newX = x;
+        int newY = y;
+        if (whereMove == 1) {
+            newX = Math.min(x + howManyMove, IslandPlace.width - 1); // Вправо
+        }
+        else if (whereMove == 3) {
+            newX = Math.max(x - howManyMove, 0); // Вліво
+        }
+        if (whereMove == 2) {
+            newY = Math.max(y - howManyMove, 0); // Вниз
+        }
+        else if (whereMove == 4) {
+            newY = Math.min(y + howManyMove, IslandPlace.height - 1); // Вгору
+        }
+        if ((newX != x) || (newY != y)) {
+            cells[newX][newY].getPredators().computeIfAbsent(predator.getType(), k -> new HashSet<>());
+            //System.out.print("Predator befor to move " + cells[newX][newY].getPredators().get(predator.getType()).size() + " >>> ");
+
+            cells[newX][newY].getPredators().computeIfAbsent(predator.getType(), k -> new HashSet<>()).add(predator);
+
+            //System.out.println(cells[newX][newY].getPredators().get(predator.getType()).size() + " after " + predator.getType());
+            isMoved = true;
+        }
+        return isMoved;
     }
 }

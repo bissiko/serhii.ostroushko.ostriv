@@ -21,6 +21,10 @@ public class Eagle extends Predator{
         speedMax = 3;
         eatMax = 1;
     }
+    public int getNumMax() {
+        return this.numMax;
+    }
+
     @Override
     public Type getType(){
         return Type.EAGLE;
@@ -33,6 +37,18 @@ public class Eagle extends Predator{
     }
     public double getEatMax() {
         return this.eatMax;
+    }
+    @Override
+    public void setLifeLevel(int lifeLevel) {
+        this.lifeLevel = lifeLevel;
+    }
+    @Override
+    public int getLifeLevel() {
+        return this.lifeLevel;
+    }
+    @Override
+    public int getSpeedMax() {
+        return this.speedMax;
     }
 
     @Override

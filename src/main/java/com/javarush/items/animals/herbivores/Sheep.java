@@ -18,6 +18,10 @@ public class Sheep extends Herbivore {
         //speedMax = 3;
         //eatMax = 15;
     }
+    public int getNumMax() {
+        return this.numMax;
+    }
+
     public static final int[] eatHerbivore = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
     //HORSE, DEER, RABBIT, MOUSE, GOAT, SHEEP, BOAR, BUFFALO, DUCK, CATERPILLAR
     public static final int[] eatPlants = {100};
@@ -45,6 +49,18 @@ public class Sheep extends Herbivore {
     @Override
     public Organism reproduce() {
         return this;
+    }
+    @Override
+    public int getSpeedMax() {
+        return this.speedMax;
+    }
+    @Override
+    public void setLifeLevel(int lifeLevel) {
+        this.lifeLevel = lifeLevel;
+    }
+    @Override
+    public int getLifeLevel() {
+        return this.lifeLevel;
     }
 
 }
