@@ -1,19 +1,19 @@
 
-G	java:S106"+Replace this use of System.out by a logger.(½É‹ê8æÎæĞ×1
-L	java:S106"+Replace this use of System.out by a logger.(¢ÑÊ·şÿÿÿÿ8æÎæĞ×1
-X	java:S125&"<This block of commented-out lines of code should be removed.(³¬º‰8èÎæĞ×1
-G	java:S106,"+Replace this use of System.out by a logger.(·ø™ä8èÎæĞ×1
+G	java:S106"+Replace this use of System.out by a logger.(½É‹ê8»ÿà£Ù1
+G	java:S106"+Replace this use of System.out by a logger.(ÈƒˆÔ8»ÿà£Ù1
+X	java:S125&"<This block of commented-out lines of code should be removed.(³¬º‰8¼ÿà£Ù1
+G	java:S106,"+Replace this use of System.out by a logger.(Æßøô8½ÿà£Ù1
 c
-java:S1126-"AReplace this if-then-else statement by a single return statement.(ÂñÁøûÿÿÿÿ8èÎæĞ×1
+java:S1126-"AReplace this if-then-else statement by a single return statement.(ÂñÁøûÿÿÿÿ8½ÿà£Ù1
 _
-java:S1854@"=Remove this useless assignment to local variable "plantType".(ù¢Û»ıÿÿÿÿ8èÎæĞ×1
+java:S1854@"=Remove this useless assignment to local variable "plantType".(ù¢Û»ıÿÿÿÿ8½ÿà£Ù1
 E
-java:S1172/"(Remove this unused method parameter "x".(ÒÛ‰À8èÎæĞ×1
-F	java:S1062"+Replace this use of System.out by a logger.(ü§ğl8èÎæĞ×1
-L	java:S1066"+Replace this use of System.out by a logger.(Ú§Ô¢øÿÿÿÿ8éÎæĞ×1
-G	java:S1068"+Replace this use of System.out by a logger.(»§ï¢8éÎæĞ×1
-F	java:S106<"+Replace this use of System.out by a logger.(ƒ£Ÿ{8éÎæĞ×1
-G	java:S106>"+Replace this use of System.out by a logger.(³ëÁã8êÎæĞ×1
+java:S1172/"(Remove this unused method parameter "x".(ÒÛ‰À8½ÿà£Ù1
+F	java:S1062"+Replace this use of System.out by a logger.(ü§ğl8½ÿà£Ù1
+L	java:S1066"+Replace this use of System.out by a logger.(Ú§Ô¢øÿÿÿÿ8¾ÿà£Ù1
+G	java:S1068"+Replace this use of System.out by a logger.(»§ï¢8¾ÿà£Ù1
+G	java:S106<"+Replace this use of System.out by a logger.(Í‡ª¦8¾ÿà£Ù1
+G	java:S106>"+Replace this use of System.out by a logger.(³ëÁã8¾ÿà£Ù1
 P
-java:S1481@".Remove this unused "plantType" local variable.(ù¢Û»ıÿÿÿÿ8êÎæĞ×1
-G	java:S106B"+Replace this use of System.out by a logger.( ˆÀå8êÎæĞ×1
+java:S1481@".Remove this unused "plantType" local variable.(ù¢Û»ıÿÿÿÿ8¿ÿà£Ù1
+G	java:S106B"+Replace this use of System.out by a logger.( ˆÀå8¿ÿà£Ù1

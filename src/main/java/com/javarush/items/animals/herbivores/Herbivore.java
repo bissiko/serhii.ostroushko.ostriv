@@ -1,24 +1,23 @@
 package com.javarush.items.animals.herbivores;
 
 import com.javarush.items.animals.Animals;
-import com.javarush.items.animals.predators.Predator;
 import com.javarush.items.plants.Plants;
 import com.javarush.place.Cell;
 import com.javarush.place.IslandPlace;
+import com.javarush.service.InitParams;
 import com.javarush.service.TypeHerbivore;
 import com.javarush.service.TypePlants;
 
 import java.util.*;
 
 import static com.javarush.place.IslandPlace.cells;
-import static com.javarush.service.TypeHerbivore.*;
 
 public abstract class Herbivore  extends Animals {
     //public double eatMax;
-    public static final int reproductValue = 15; // Herbivore не може розмножуватися кожен день, а раз на стільки днів
+    public static final int reproductValue = InitParams.reproductValueHerbivore; // Herbivore не може розмножуватися кожен день, а раз на стільки днів
 
     public abstract TypeHerbivore getType();
-    public static TypeHerbivore[] typesHerbivore = {HORSE, DEER, RABBIT, MOUSE, GOAT, SHEEP, BOAR, BUFFALO, DUCK, CATERPILLAR};
+    public static TypeHerbivore[] typesHerbivore = InitParams.typesHerbivore; //{HORSE, DEER, RABBIT, MOUSE, GOAT, SHEEP, BOAR, BUFFALO, DUCK, CATERPILLAR}
     public static int getTypeIndex(TypeHerbivore type) {
         for (int i = 0; i < typesHerbivore.length; i++) {
             if (typesHerbivore[i] == type){
@@ -27,13 +26,22 @@ public abstract class Herbivore  extends Animals {
         }
         return -1;
     }
-    public static final int againEatMax = 1000;
+    public static int getNumMaxHerbivore(TypeHerbivore type) {
+        return InitParams.numMaxHerbivores[Herbivore.getTypeIndex(type)];
+    }
+    public static int getSpeedMaxHerbivore(TypeHerbivore type) {
+        return InitParams.speedMaxHerbivores[Herbivore.getTypeIndex(type)];
+    }
+    public static double getEatMaxHerbivore(TypeHerbivore type) {
+        return InitParams.eatMaxHerbivores[Herbivore.getTypeIndex(type)];
+    }
+
+    //public static final int againEatMax = InitParams.againEatMax; //max number of times to eat the same Type Animals for one time
 
     public abstract double getWeight();
     public abstract double getEatMax();
     public abstract int getEatHerbivoreChance(TypeHerbivore type);
     public abstract int getEatPlantsChance(TypePlants type);
-    //@Override
     public boolean tryEating(Cell cell, Herbivore herbivore) {
         Random random = new Random();
         boolean isHerbivoreEat = false;
@@ -63,7 +71,7 @@ public abstract class Herbivore  extends Animals {
             if ((canEaten > 0) && (random.nextInt(101) <= canEaten)) {
                 Iterator<Herbivore> iteratorH = herbivoreSet2.iterator();
                 int i = 0;
-                while ((iteratorH.hasNext() && !isHerbivoreEat) && (i < Herbivore.againEatMax)) {
+                while ((iteratorH.hasNext() && !isHerbivoreEat) && (i < InitParams.againEatMax)) {
                     Herbivore herbivore2 = iteratorH.next();
                     if (herbivore2.getWeight() >= herbivoreEatMax) {
                         eatNow = herbivoreEatMax;

@@ -20,7 +20,7 @@ public class Application {
         boolean isCanRun = true;
         int lifeSteps = 1;
         while (isCanRun) {
-            System.out.println("\n Start RunLife !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! "  + lifeSteps);
+            System.out.println("\n Start RunLife !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Step "  + lifeSteps);
             getStatistik(cells, "  ", " befor");
 
             runLifeNew.runLife(cells.islandPlace.getCells());
@@ -41,7 +41,7 @@ public class Application {
                 }
             }
         }
-        System.out.println("Total Herbivores now " + totalHerbivores);
+        System.out.println("Total Herbivores now = = = " + totalHerbivores);
         if (totalHerbivores == 0) {return false;} else {return true;}
     }
     private static void getStatistik(InitCells cells, String spaces, String x) {
@@ -57,7 +57,7 @@ public class Application {
         for (Map.Entry<TypeHerbivore, Set<Herbivore>> entry : cells.islandPlace.getCells()[itX][itY].getHerbivore().entrySet()) {
             TypeHerbivore herbivoreType = entry.getKey();
             Set<Herbivore> herbivoreSet = entry.getValue();
-            System.out.print(herbivoreSet.size() + spaces + herbivoreType + ", ");
+            System.out.print(herbivoreType + spaces + herbivoreSet.size() + ", ");
         }
         System.out.print("\n +++++++++ Plants... ");
         for (Map.Entry<TypePlants, Set<Plants>> entryPlants : cells.islandPlace.getCells()[itX][itY].getPlants().entrySet()) {

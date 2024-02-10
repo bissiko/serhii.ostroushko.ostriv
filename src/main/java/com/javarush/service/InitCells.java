@@ -9,8 +9,6 @@ import com.javarush.place.IslandPlace;
 
 import java.util.*;
 
-//import static com.javarush.service.Type.WOLF;
-
 public class InitCells {
     public IslandPlace islandPlace = new IslandPlace();
     public void initCells() {

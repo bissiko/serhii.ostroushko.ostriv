@@ -72,3 +72,5 @@ c
 3src/main/java/com/javarush/items/plants/Plants.java,4\e\4eeeffc51cf0424397dfc45923cce5663477bbaf
 F
 src/main/resources.xml,a\c\ac8e1b3e6253e073541c952d9c070c6eba27cbb2
+b
+2src/main/java/com/javarush/service/InitParams.java,a\9\a94b4fab6e3e02c7b5e0fe3c8238914cbf5d9161

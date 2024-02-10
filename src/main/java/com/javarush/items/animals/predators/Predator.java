@@ -4,7 +4,7 @@ import com.javarush.items.animals.Animals;
 import com.javarush.items.animals.herbivores.Herbivore;
 import com.javarush.place.Cell;
 import com.javarush.place.IslandPlace;
-import com.javarush.service.InitCells;
+import com.javarush.service.InitParams;
 import com.javarush.service.Type;
 import com.javarush.service.TypeHerbivore;
 
@@ -14,22 +14,32 @@ import static com.javarush.place.IslandPlace.cells;
 import static com.javarush.service.Type.*;
 
 public abstract class Predator extends Animals {
-    public double eatMax;
-    public static final int reproductValue = 50; // Predator не може розмножуватися кожен день, а раз на стільки днів
+    //public double eatMax;
+    //public static final int reproductValue = InitParams.reproductValuePredator; // Predator не може розмножуватися кожен день, а раз на стільки днів
 
     public abstract int getSpeedMax();
     public abstract Type getType();
     public abstract double getEatMax();
     public abstract double getWeight();
-    public Type[] types = {WOLF, BOA, BEAR, EAGLE, FOX};
-    public int getTypeIndex(Type type) {
-        for (int i = 0; i < types.length; i++) {
-            if (types[i] == type){
+    //public static Type[] types = InitParams.typesPredators; //{WOLF, BOA, BEAR, EAGLE, FOX}
+    public static int getTypeIndex(Type type) {
+        for (int i = 0; i < InitParams.typesPredators.length; i++) {
+            if (InitParams.typesPredators[i] == type){
                 return i;
             }
         }
         return -1;
     }
+    public static int getNumMaxPredator(Type type) {
+        return InitParams.numMaxPredators[Predator.getTypeIndex(type)];
+    }
+    public static int getSpeedMaxPredators(Type type) {
+        return InitParams.speedMaxPredators[Predator.getTypeIndex(type)];
+    }
+    public static double getEatMaxPredators(Type type) {
+        return InitParams.eatMaxPredators[Predator.getTypeIndex(type)];
+    }
+
     public abstract int getEatHerbivoreChance(TypeHerbivore type);
     //@Override
     public boolean tryEating(Cell cell, Predator predator) {
@@ -47,7 +57,7 @@ public abstract class Predator extends Animals {
             if ((canEaten > 0) && (random.nextInt(101) <= canEaten)) {
                 Iterator<Herbivore> iteratorH = herbivoreSet.iterator();
                 int i = 0;
-                while ((iteratorH.hasNext() && !isPredatorEat) && (i < Herbivore.againEatMax)) {
+                while ((iteratorH.hasNext() && !isPredatorEat) && (i < InitParams.againEatMax)) {
 
                     Herbivore herbivore = iteratorH.next();
                     if (herbivore.getWeight() > predatorEatMax) {

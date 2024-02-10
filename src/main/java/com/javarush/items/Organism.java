@@ -2,9 +2,9 @@ package com.javarush.items;
 
 import com.javarush.abstracts.Reproductable;
 
-public abstract class Organism implements Reproductable {
-    public int lifeLevel = 99;
-    public int numMax;
+public abstract class Organism<T> implements Reproductable {
+    public int lifeLevel = 100;
+    //public int numMax;
 
     public void setLifeLevel(int lifeLevel) {
         this.lifeLevel = lifeLevel;
@@ -13,5 +13,4 @@ public abstract class Organism implements Reproductable {
         return this.lifeLevel;
     }
 
-    public abstract int getNumMax();
 }

@@ -1,7 +1,7 @@
 package com.javarush.service;
 
-import com.javarush.items.animals.herbivores.Herbivore;
-import com.javarush.items.animals.predators.Predator;
+import com.javarush.items.animals.herbivores.*;
+import com.javarush.items.animals.predators.*;
 import com.javarush.items.plants.Gras;
 import com.javarush.items.plants.Plants;
 import com.javarush.place.Cell;
@@ -107,11 +107,17 @@ public class RunLife {
             Type predatorType = entry.getKey();
             Set<Predator> predatorSet = entry.getValue();
             int predatorCount = predatorSet.size();
-
+            int numMax = switch (predatorType){
+                case WOLF -> Wolf.numMax;
+                case BOA -> Boa.numMax; //удав
+                case BEAR -> Bear.numMax;
+                case EAGLE -> Eagle.numMax;
+                case FOX -> Fox.numMax;
+            };
             if (predatorCount > 1) {
-                for (int i = 0; i < Math.max(1, predatorCount/(2*Predator.reproductValue)); i++) {
+                for (int i = 0; i < Math.max(1, predatorCount/(2*InitParams.reproductValuePredator)); i++) {
                     Predator predator = new InitCells().createAnimalByType(predatorType);
-                    if (predatorSet.size() < predator.getNumMax()) {
+                    if (predatorSet.size() < numMax) {
                         //System.out.print(predatorSet.size() + " > ");
                         predatorSet.add(predator);
                         //System.out.println(predatorSet.size() + " After " + predator.getType() + ": numMax " + predator.getNumMax());
@@ -127,12 +133,24 @@ public class RunLife {
             TypeHerbivore herbivoreType = entry.getKey();
             Set<Herbivore> herbivoreSet = entry.getValue();
             int herbivoreCount = herbivoreSet.size();
+            int numMax = switch (herbivoreType) {
+                case DEER -> Deer.numMax; //Олень
+                case RABBIT -> Rabbit.numMax;
+                case MOUSE -> Mouse.numMax;
+                case GOAT -> Goat.numMax; // козел
+                case SHEEP -> Sheep.numMax;
+                case BOAR -> Boar.numMax; //кабан
+                case BUFFALO -> Buffalo.numMax; //буйвол
+                case DUCK -> Duck.numMax; //утка
+                case CATERPILLAR -> Caterpillar.numMax; // гусеница
+                case HORSE -> Horse.numMax;
 
+            };
             if (herbivoreCount > 1) {
                 for (int i = 0; i < Math.max(1, herbivoreCount/(2*Herbivore.reproductValue)); i++) {
                     Herbivore herbivore = new InitCells().createHerbivoreByType(herbivoreType);
 
-                    if (herbivoreSet.size() < herbivore.getNumMax()) {
+                    if (herbivoreSet.size() < numMax) {
 
                     //System.out.print(herbivoreCount + " " + herbivoreSet.size() + " > ");
                     herbivoreSet.add(herbivore);

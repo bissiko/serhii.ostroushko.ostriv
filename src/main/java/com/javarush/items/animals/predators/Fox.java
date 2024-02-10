@@ -2,29 +2,23 @@ package com.javarush.items.animals.predators;
 
 import com.javarush.items.Organism;
 import com.javarush.items.animals.herbivores.Herbivore;
+import com.javarush.service.InitParams;
 import com.javarush.service.Type;
 import com.javarush.service.TypeHerbivore;
 
 public class Fox extends Predator {
     public int lifeLevel;
-    public static final int numMax = 30;
-    public final double eatMax;
-    public final int speedMax;
+    public static final int numMax = getNumMaxPredator(Type.FOX); //30
+    public static final int speedMax = getSpeedMaxPredators(Type.FOX); //2
+    public static final double eatMax = getEatMaxPredators(Type.FOX); //2
     public double weight;
-    public static final int[] eatHerbivore = {0, 0, 70, 90, 0, 0, 0, 0, 60, 40};
+    public static final int[] eatHerbivore = InitParams.eatHerbivoreFox; // {0, 0, 70, 90, 0, 0, 0, 0, 60, 40};
     //HORSE, DEER, RABBIT, MOUSE, GOAT, SHEEP, BOAR, BUFFALO, DUCK, CATERPILLAR
 
     public Fox(){
-        //numMax = this.numMax;
         lifeLevel = 100;
         weight = 8;
-        speedMax = 2;
-        eatMax = 2;
     }
-    public int getNumMax() {
-        return this.numMax;
-    }
-
     @Override
     public Type getType(){
         return Type.FOX;
@@ -36,7 +30,7 @@ public class Fox extends Predator {
         return this.weight;
     }
     public double getEatMax() {
-        return this.eatMax;
+        return Fox.eatMax;
     }
     @Override
     public void setLifeLevel(int lifeLevel) {
@@ -48,7 +42,7 @@ public class Fox extends Predator {
     }
     @Override
     public int getSpeedMax() {
-        return this.speedMax;
+        return Fox.speedMax;
     }
     @Override
     public Organism reproduce() {
