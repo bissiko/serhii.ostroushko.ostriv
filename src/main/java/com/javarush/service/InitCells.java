@@ -10,13 +10,13 @@ import com.javarush.place.IslandPlace;
 import java.util.*;
 
 public class InitCells {
-    public IslandPlace islandPlace = new IslandPlace();
+    public static final IslandPlace islandPlace = new IslandPlace();
+    public static final Random random = new Random();
+
     public void initCells() {
         for (int x = 0; x < islandPlace.getWidth(); x++) {
             for (int y = 0; y < islandPlace.getHeight(); y++) {
-                Cell cell = new Cell(new HashMap<Type, Set< Predator >>(),
-                        new HashMap<TypeHerbivore, Set< Herbivore >>(),
-                        new HashMap<TypePlants, Set<Plants>>());
+                Cell cell = new Cell(new HashMap<>(), new HashMap<>(), new HashMap<>());
                 fulfillPredators(cell);
                 fulfillHerbivores(cell);
                 fulfillPlants(cell);
@@ -31,7 +31,6 @@ public class InitCells {
     }
 
     private void fulfillPlants(Cell cell) {
-        Random random = new Random();
         Map<TypePlants, Integer> maxPlantsCount = new EnumMap<>(TypePlants.class);
         maxPlantsCount.put(TypePlants.GRAS, Gras.numMax); //20.
 
@@ -52,8 +51,6 @@ public class InitCells {
     }
 
     private void fulfillHerbivores(Cell cell) {
-        Random random = new Random();
-
         Map<TypeHerbivore, Integer> maxHerbivoresCount = new EnumMap<>(TypeHerbivore.class);
         maxHerbivoresCount.put(TypeHerbivore.HORSE, Horse.numMax); //20.
         maxHerbivoresCount.put(TypeHerbivore.DEER, Deer.numMax); //20
@@ -82,7 +79,6 @@ public class InitCells {
     }
 
     private void fulfillPredators(Cell cell) {
-        Random random = new Random();
         Map<Type, Integer> maxPredatorsCount = new EnumMap<>(Type.class);
         maxPredatorsCount.put(Type.WOLF, Wolf.numMax); //30
         maxPredatorsCount.put(Type.BEAR, Bear.numMax); //5
@@ -136,24 +132,24 @@ public class InitCells {
         Type predatorType = getTypePredator(predator);
         cell.getPredators().computeIfAbsent(predatorType, k -> new HashSet<>()).add(predator); //52.32
     }
-    public TypeHerbivore getTypeHerbivore(Herbivore herbivore) {
-        if (herbivore instanceof Herbivore){
+    public TypeHerbivore getTypeHerbivore(Herbivore herbivore) throws NullPointerException {
+        if (herbivore != null){
             //Виявлення типу тварини
-            return ((Herbivore)herbivore).getType();
+            return herbivore.getType();
         }
         throw new IllegalArgumentException("Невідомий тип Herbivore" + herbivore.getClass().getSimpleName());
     }
-    public Type getTypePredator(Predator predator) {
-        if (predator instanceof Predator){
+    public Type getTypePredator(Predator predator) throws NullPointerException {
+        if (predator != null){
             //Виявлення типу тварини
-            return ((Predator)predator).getType();
+            return predator.getType();
         }
-        throw new IllegalArgumentException("Невідомий тип Predator" + predator.getClass().getSimpleName());
+        throw new NullPointerException("Невідомий тип Predator" + predator.getClass().getSimpleName());
     }
-    public TypePlants getTypePlants(Plants plants) {
-        if (plants instanceof Plants){
+    public TypePlants getTypePlants(Plants plants) throws NullPointerException {
+        if (plants != null){
             //Виявлення типу рослини
-            return ((Plants)plants).getType();
+            return plants.getType();
         }
         throw new IllegalArgumentException("Невідомий тип рослини" + plants.getClass().getSimpleName());
     }

@@ -6,7 +6,7 @@ import static com.javarush.service.TypeHerbivore.CATERPILLAR;
 import static com.javarush.service.TypePlants.GRAS;
 
 public class InitParams {
-    public final static int widthIsland = 120;
+    public static final int widthIsland = 120;
 
     public static final int heightIsland = 20;
     public static final Type[] typesPredators = {WOLF, BOA, BEAR, EAGLE, FOX};
@@ -15,7 +15,7 @@ public class InitParams {
     public static final int[] numMaxPredators = {30, 30, 5, 20, 30}; //Max number of Predators in Cell
     public static final int[] numMaxHerbivores = {20, 20, 150, 500, 140, 140, 50, 10, 200, 1000}; //Max number of Herbivores in Cell
 
-    //HORSE, DEER, RABBIT, MOUSE, GOAT, SHEEP, BOAR, BUFFALO, DUCK, CATERPILLAR
+                        //HORSE, DEER, RABBIT, MOUSE, GOAT, SHEEP, BOAR, BUFFALO, DUCK, CATERPILLAR
     public static final int[] eatHerbivoreWolf = {10, 15, 60, 80, 60, 70, 15, 10, 40, 0};
     public static final int[] eatHerbivoreBoa = {0, 0, 20, 40, 0, 0, 0, 0, 10, 0};
     public static final int[] eatHerbivoreEagle = {0, 0, 90, 90, 0, 0, 0, 0, 80, 0};

@@ -21,31 +21,29 @@ public class RunLife {
                 /*System.out.println("Cell: " + x + "-" + y +
                         ". Predators: " + cell.getPredators().size() +
                         " Gras: " + cell.getPlants().size() +
-                        " Herbivore: " + cell.getHerbivore().size());*/
+                        " Herbivore: " + cell.getHerbivore().size()); */
                 eatingPredators(cell);
                 eatingHerbivores(cell);
                 /*System.out.println("Cell after Eating: " + x + "-" + y +
                         ". Predators: " + cell.getPredators().size() +
                         " Gras: " + cell.getPlants().size() +
-                        " Herbivore: " + cell.getHerbivore().size());*/
+                        " Herbivore: " + cell.getHerbivore().size()); */
                 reproductPredators(cell);
                 reproductHerbivores(cell);
                 reproductPlants(cell);
-                //this.cells[x][y] = cell;
 
                 /*System.out.println("Cell after reproduct: " + x + "-" + y +
                         ". Predators: " + cell.getPredators().size() +
                         " Gras: " + cell.getPlants().size() +
-                        " Herbivore: " + cell.getHerbivore().size());*/
+                        " Herbivore: " + cell.getHerbivore().size()); */
             }
         }
         return cells;
     }
     public void eatingPredators(Cell cell){
-        //Random random = new Random();
         //System.out.println("Start Predator eating: ");
         for (Map.Entry<Type, Set<Predator>> entry : cell.getPredators().entrySet()) {
-            Type predatorType = entry.getKey();
+            //Type predatorType = entry.getKey();
             Set<Predator> predatorSet = entry.getValue();
 
             Iterator<Predator> iterator = predatorSet.iterator();
@@ -74,7 +72,7 @@ public class RunLife {
     public void eatingHerbivores(Cell cell){
         //System.out.println("Start Herbivore eating: ");
         for (Map.Entry<TypeHerbivore, Set<Herbivore>> entry : cell.getHerbivore().entrySet()) {
-            TypeHerbivore herbivoreType = entry.getKey();
+            //TypeHerbivore herbivoreType = entry.getKey();
             Set<Herbivore> herbivoreSet = entry.getValue();
 
             Iterator<Herbivore> iterator = herbivoreSet.iterator();
@@ -198,7 +196,7 @@ public class RunLife {
     public void movePredators(Cell cell, int x, int y) {
         //System.out.println("Start moving Predators: ");
         for (Map.Entry<Type, Set<Predator>> entry : cell.getPredators().entrySet()) {
-            Type predatorType = entry.getKey();
+            //Type predatorType = entry.getKey();
             Set<Predator> predatorSet = entry.getValue();
 
             Iterator<Predator> iterator = predatorSet.iterator();
@@ -220,7 +218,7 @@ public class RunLife {
     public void moveHerbivores(Cell cell, int x, int y){
         //System.out.println("Start moving Herbivores: ");
         for (Map.Entry<TypeHerbivore, Set<Herbivore>> entry : cell.getHerbivore().entrySet()) {
-            TypeHerbivore herbivoreType = entry.getKey();
+            //TypeHerbivore herbivoreType = entry.getKey();
             Set<Herbivore> herbivoreSet = entry.getValue();
 
             Iterator<Herbivore> iterator = herbivoreSet.iterator();
